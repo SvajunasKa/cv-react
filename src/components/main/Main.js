@@ -1,9 +1,12 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 const mainSection = (props) => {
-				return(
-					<div>{props.title}</div>
-				)
+	console.log(props.index)
+	return (
+		<section key={props.index}>
+			{props.title}
+		</section>
+	)
 };
 
 export default mainSection;
