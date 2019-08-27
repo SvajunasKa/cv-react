@@ -34,8 +34,8 @@ import MainSection from './components/main/Main'
 //
 // }
 
-function App() {
-	const [state] = useState(data);
+function createSection(state) {
+	console.log(state)
 	const sections_obj = state.sections;
 	const section = sections_obj.map((data, index) => {
 		return <MainSection
@@ -44,10 +44,24 @@ function App() {
 			index={index}
 		/>
 	});
+	return section
+}
+
+function App() {
+	const [state] = useState(data);
+	// const sections_obj = state.sections;
+	// const section = sections_obj.map((data, index) => {
+	// 	return <MainSection
+	// 		title={data.title}
+	// 		description={data.description}
+	// 		index={index}
+	// 	/>
+	// });
+	//createSection(state);
 	return (
 		<>
 			<main>{state.main}</main>
-			{section}
+			{createSection(state)}
 		</>
 	)
 }
