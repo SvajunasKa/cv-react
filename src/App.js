@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+
+import data from './data/data'
 import './App.css';
 
+import MainSection from './components/main/Main'
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [state] = useState(data);
+	const sections = state.sections;
+
+
+	return (
+		sections.map((data, index) => {
+			console.log(data, "index", index)
+			return <div className="App">
+				<MainSection
+					title={data.title}
+					description={data.description}
+					key={index}
+				/>
+			</div>
+		})
+
+	);
 }
 
 export default App;
