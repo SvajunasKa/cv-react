@@ -34,37 +34,40 @@ import MainSection from './components/main/Main'
 //
 // }
 
-function createSection(state) {
-	console.log(state)
-	const sections_obj = state.sections;
-	const section = sections_obj.map((data, index) => {
-		return <MainSection
-			title={data.title}
-			description={data.description}
-			index={index}
-		/>
-	});
-	return section
-}
+// function createSection(state) {
+// 	console.log(state)
+// 	const sections_obj = state.sections;
+// 	const section = sections_obj.map((data, index) => {
+// 		return <MainSection
+// 			title={data.title}
+// 			description={data.description}
+// 			index={index}
+// 		/>
+// 	});
+// 	return section
+// }
 
-function App() {
-	const [state] = useState(data);
-	// const sections_obj = state.sections;
-	// const section = sections_obj.map((data, index) => {
-	// 	return <MainSection
-	// 		title={data.title}
-	// 		description={data.description}
-	// 		index={index}
-	// 	/>
-	// });
-	//createSection(state);
+
+
+
+export default function App() {
+
 	return (
 		<>
-			<main>{state.main}</main>
-			{createSection(state)}
+			<main>{data.main}</main>
+			<Aaa aaa={'test'} ddd='aaa' ccc={55}/>
 		</>
 	)
 }
 
-
-export default App;
+function Aaa({aaa, bbb = '123', ...props}) {
+	console.log(props);
+	return data.sections.map((data, index) =>
+		<MainSection
+			key={index}
+			title={data.title}
+			description={data.description}
+			{...props}
+		/>
+	);
+};
