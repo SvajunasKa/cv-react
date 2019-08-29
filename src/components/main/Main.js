@@ -1,7 +1,6 @@
 import React from 'react'
 
-const mainSection = (props) => {
-	console.log('!',props)
+const Section = (props) => {
 	return (
 		<section key={props.index}>
 			{props.title}
@@ -9,4 +8,4 @@ const mainSection = (props) => {
 	)
 };
 
-export default mainSection;
+export default Section;

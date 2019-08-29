@@ -3,7 +3,9 @@ import React, {useState} from 'react';
 import data from './data/data'
 import './App.css';
 
-import MainSection from './components/main/Main'
+import Section from './components/main/Main'
+import Modal from './components/modal/Modal'
+
 
 
 // class App extends React.Component {
@@ -52,22 +54,30 @@ import MainSection from './components/main/Main'
 
 export default function App() {
 
+	const [name, setName] = useState();
+
+	function getInputValue(val) {
+		setName(val)
+		//return name;
+	}
+
 	return (
 		<>
-			<main>{data.main}</main>
-			<Aaa aaa={'test'} ddd='aaa' ccc={55}/>
+			{!name && <Modal callbackFn={getInputValue}/>}
+			<main>{name}</main>
+			<CreateSections/>
 		</>
 	)
 }
 
-function Aaa({aaa, bbb = '123', ...props}) {
-	console.log(props);
+
+
+function CreateSections() {
 	return data.sections.map((data, index) =>
-		<MainSection
+		<Section
 			key={index}
 			title={data.title}
 			description={data.description}
-			{...props}
 		/>
 	);
-};
+}
